@@ -3,8 +3,8 @@
 
 pa equ 0d800h
 pb equ 0d801h
-pc equ 0d8002h
-cr equ 0d8003h
+pc equ 0d802h
+cr equ 0d803h
 
 .stack
 .code
@@ -18,7 +18,9 @@ loc1: mov dx,pb
         in al,dx
         not al
         mov dx,pa
-        int 10h
+	out dx,al
+	mov ah,01h
+        int 16h
         jz loc1
         mov ah,4ch
         int 21h
